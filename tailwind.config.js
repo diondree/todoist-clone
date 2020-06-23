@@ -1,7 +1,11 @@
 module.exports = {
   purge: ["./src/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        todoistred: "#db4c3f",
+      },
+    },
   },
   variants: {},
   plugins: [],
