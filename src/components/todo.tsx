@@ -1,10 +1,17 @@
 import React from 'react';
-export interface TodoProps {
-  onClick: React.MouseEvent<HTMLElement>
+import { Todo } from '../store/todos/types';
+export interface TodoItemProps {
+  todo: Todo;
+  onClick?: React.MouseEvent<HTMLElement>;
 }
 
-const Todo: React.FC<TodoProps> = ({ onClick }) => {
-  return (<div></div>);
-}
+const TodoItem: React.FC<TodoItemProps> = ({ todo, onClick }) => {
+  return (
+    <div>
+      <span>Todo</span>
+      <p>{todo.text}</p>
+    </div>
+  );
+};
 
-export default Todo;
+export default TodoItem;

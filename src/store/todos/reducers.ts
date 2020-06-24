@@ -1,28 +1,33 @@
-import { TodoActionTypes } from "./types";
-import { State } from "..";
+import { TodoActionTypes } from './types';
 
-export const initialState: State = {
-  todos: [{
-    "id": 0,
-    "text": "Test",
-    "completed": false
-  }]
-}
+export const initialTodos = [
+  {
+    id: 0,
+    text: 'Test',
+    completed: false,
+  },
+];
 
-export const todosReducer = (state = initialState.todos, action: TodoActionTypes) => {
+export const todos = (state = initialTodos, action: TodoActionTypes) => {
   switch (action.type) {
     case 'ADD_TODO':
       return {
         id: action.payload.id,
         text: action.payload.text,
-        completed: false
-      }
+        completed: false,
+      };
     case 'TOGGLE_TODO':
-      return state.map((todo) => (todo.id === action.payload.id) ? { ...todo, completed: !todo.completed } : todo);
+      return state.map((todo) =>
+        todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo
+      );
     default:
       return state;
   }
-}
+};
 
-
-
+export const FilteredTodos = (state: any, action: any) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};

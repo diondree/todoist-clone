@@ -1,0 +1,10 @@
+<svg width="24" height="24" class="search_icon">
+  <g fill="none" fill-rule="evenodd" transform="translate(4 4)">
+    <mask id="sm1/search/b" fill="#fff">
+      <path id="sm1/search/a" d="M11.44 10.73l4.41 4.42a.5.5 0 0 1-.7.7l-4.42-4.41a6.5 6.5 0 1 1 .7-.71zM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"></path>
+    </mask>
+    <g mask="url(#sm1/search/b)">
+      <path fill="currentColor" d="M-3-4h24v24H-4z"></path>
+    </g>
+  </g>
+</svg>

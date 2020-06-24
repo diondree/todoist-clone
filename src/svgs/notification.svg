@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g fill="none" fill-rule="evenodd" transform="translate(4 3)">
+    <mask id="sm1/notifications/b" fill="#fff">
+      <path id="sm1/notifications/a" d="M10.8 16a3 3 0 0 1-5.6 0h5.6zM5 15h6-6zm-3.8 0a1 1 0 0 1-.8-1.5 16 16 0 0 0 2.1-8 5.5 5.5 0 0 1 11 0c0 2.8.7 5.5 2.1 8a1 1 0 0 1-.8 1.5H1.2z"></path>
+    </mask>
+    <g mask="url(#sm1/notifications/b)">
+      <path fill="currentColor" d="M-4-3h24v24H-4z"></path>
+    </g>
+  </g>
+</svg>
