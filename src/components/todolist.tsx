@@ -14,7 +14,7 @@ const TodoList: React.FC<TodoListProps> = () => {
     <div>
       <ul>
         {todos.map((todo: Todo) => (
-          <li key={todo.id}>
+          <li className="todo-list-item" key={todo.id}>
             <TodoItem todo={todo} />
           </li>
         ))}

@@ -14840,6 +14840,150 @@ button:active {
   }
 }
 
+.todo-list-item {
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+}
+
+.todo-item__drag {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -23px;
+  width: 24px;
+}
+
+.todo-item__drag-handle {
+  position: relative;
+  top: 6px;
+  margin-left: 0;
+  z-index: 1;
+  opacity: 0;
+  cursor: move;
+  color: grey;
+}
+
+.todo-item__drag-handle:hover {
+  color: #202020;
+}
+
+.todo-list-item:hover .todo-item__drag-handle {
+  opacity: 1;
+}
+
+.todo-item__checkbox {
+  margin: 10px 10px 0 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 1px solid grey;
+  border-radius: 16px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-item__checkbox svg {
+  display: inline-block;
+  border: 1px solid transparent;
+  height: 16px;
+  width: 16px;
+  margin-left: -8px;
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
+  margin-top: -8px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.todo-item__content-holder {
+  flex: 1;
+  padding: 8px 0;
+  margin-right: 30px;
+}
+
+.todo-item__content {
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  font-size: 14px;
+  min-height: 24px;
+  line-height: 21px;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.todo-item__info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  min-height: 16px;
+}
+
+.todo-item__project {
+  height: 16px;
+  display: flex;
+  margin-left: auto;
+  margin-right: -30px;
+}
+
+.todo-item__project a {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: grey;
+  text-decoration: none;
+}
+
+.todo-item__project a span {
+  display: block;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 4px;
+}
+
+.todo-item__actions {
+  display: flex;
+  justify-content: flex-end;
+  height: 24px;
+  margin-right: -38px;
+  margin-top: 8px;
+  padding-left: 16px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.todo-item__actions button {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  width: 24px;
+  height: 24px;
+  color: grey;
+  opacity: 0;
+}
+
+.todo-list-item:hover .todo-item__actions button {
+  opacity: 1;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
