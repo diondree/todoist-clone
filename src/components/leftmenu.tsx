@@ -11,7 +11,7 @@ const LeftMenu: React.FC<LeftMenuProps> = () => {
   const isMenuOpen = useSelector((state: RootState) => state.isMenuOpen);
 
   return (
-    <div className={`left-menu && ${!isMenuOpen && 'left-menu--close'}`}>
+    <div className={`left-menu ${!isMenuOpen && 'left-menu--close'}`}>
       <div className="left-menu-container">
         <div>
           <ul className="top-filters p-0 m md:m-0">

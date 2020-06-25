@@ -1,19 +1,21 @@
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export type TodoText = string;
-export type TodoId = number;
+export type TodoId = string;
 
 export type TodoState = Todo[];
 
 export type Todo = {
-  id: number;
+  id: string;
   text: string;
+  dueDate: string;
   completed: boolean;
 };
 
 export type NewTodo = {
-  id: number;
+  id?: TodoId;
   text: string;
+  dueDate: string;
 };
 
 interface AddTodoAction {

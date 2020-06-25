@@ -1,24 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Todo } from '../store/todos/types';
 import { RootState } from '../store';
 import TodoItem from './todo';
-import { useSelector } from 'react-redux';
+import { ReactComponent as PlusIcon } from '../svgs/plus-lg.svg';
+import TodoForm from './todoform';
 
-export interface TodoListProps {
-  // todos: Todo[];
-}
+const TodoList: React.FC = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState('');
 
-const TodoList: React.FC<TodoListProps> = () => {
   const todos = useSelector((state: RootState) => state.todos);
+
+  const toggleEditing = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const handleEdit = (id: string) => {
+    setSelectedTodo(id);
+    setIsEditing(true);
+  };
+
+  const handleEditCancel = () => {
+    setSelectedTodo('');
+    setIsEditing(false);
+  };
+
   return (
     <div>
       <ul>
-        {todos.map((todo: Todo) => (
-          <li className="todo-list-item" key={todo.id}>
-            <TodoItem todo={todo} />
+        {todos.map(
+          (todo: Todo) =>
+            todo.id !== selectedTodo && (
+              <li className="todo-list-item" key={todo.id}>
+                <TodoItem todo={todo} onEdit={handleEdit} />
+              </li>
+            )
+        )}
+        {isEditing && (
+          <li className="todo-form-manager">
+            <TodoForm
+              {...(selectedTodo !== '' && { todo: todos.find((todo) => todo.id === selectedTodo) })}
+              onCancel={handleEditCancel}
+            />
           </li>
-        ))}
-        <li></li>
+        )}
+        {!isEditing && (
+          <li className="todo-actions">
+            <button className="plus-add-button" onClick={toggleEditing}>
+              <span className="icon-add">
+                <PlusIcon height="13" width="13" />
+              </span>
+              Add Task
+            </button>
+          </li>
+        )}
       </ul>
     </div>
   );

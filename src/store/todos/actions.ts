@@ -1,11 +1,11 @@
-import { TodoId, TodoText, TodoActionTypes } from './types';
-let nextId = 0;
+import { TodoId, TodoActionTypes, NewTodo } from './types';
+import { v4 as uuidv4 } from 'uuid';
 
-export const addTodo = (text: TodoText): TodoActionTypes => ({
+export const addTodo = (todo: NewTodo): TodoActionTypes => ({
   type: 'ADD_TODO',
   payload: {
-    id: nextId++,
-    text,
+    id: uuidv4(),
+    ...todo,
   },
 });
 

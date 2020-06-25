@@ -43,8 +43,8 @@ const Header: React.FC<HeaderProps> = () => {
 
   return (
     <div className="header px-3 md:px-10 flex justify-between bg-todoistred text-white fixed top-0 w-screen z-50">
-      <div className="left flex items-center justify-start space-x-3">
-        <button className="top-bar-btn" onClick={toggleMenu}>
+      <div className="left flex items-center justify-start">
+        <button className="top-bar-btn mr-1" onClick={toggleMenu}>
           <CloseIcon
             aria-label="Close Menu"
             className={`close-menu-icon ${isMenuOpen && 'close-menu-icon--open'}`}

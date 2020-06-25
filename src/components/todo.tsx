@@ -4,13 +4,19 @@ import { ReactComponent as DragIcon } from '../svgs/drag.svg';
 import { ReactComponent as CheckedIcon } from '../svgs/checked.svg';
 import { ReactComponent as DotIcon } from '../svgs/dot.svg';
 import { ReactComponent as EditIcon } from '../svgs/edit.svg';
+import { ReactComponent as MoreMenuIcon } from '../svgs/more-menu.svg';
 
 export interface TodoItemProps {
   todo: Todo;
-  onClick?: React.MouseEvent<HTMLElement>;
+  onEdit?: Function;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ todo, onClick }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ todo, onEdit }) => {
+  const onEditHandler = () => {
+    if (onEdit) {
+      onEdit(todo.id);
+    }
+  };
   return (
     <div className="todo-item">
       <div className="todo-item__drag">
@@ -35,12 +41,14 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, onClick }) => {
         </div>
       </div>
       <div className="todo-item__actions">
-        <button type="button" aria-label="Edit">
+        <button type="button" aria-label="Edit" onClick={onEditHandler}>
           <EditIcon />
         </button>
-        <button></button>
-        <button></button>
-        <button></button>
+        <button type="button" aria-label="More task actions">
+          <MoreMenuIcon />
+        </button>
+        {/* <button type="button"></button>
+        <button type="button"></button> */}
       </div>
     </div>
   );
