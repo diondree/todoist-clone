@@ -31,6 +31,7 @@ export const todos = (todos = initialTodos, action: TodoActionTypes) => {
       return todos.map((todo) =>
         todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo
       );
+
     default:
       return todos;
   }

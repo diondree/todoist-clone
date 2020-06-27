@@ -24,11 +24,12 @@ const getFilteredTodos = (filter: Filter, todos: Todo[]): Todo[] => {
 
   return todos;
 };
+
 const TodoList: React.FC<TodoListProps> = ({ filter }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState('');
 
-  const todos = useSelector((state: RootState) => state.todos);
+  const todos = useSelector((state: RootState) => state.todos.filter((todo) => !todo.completed));
   const filteredTodos = getFilteredTodos(filter, todos);
 
   const toggleEditing = () => {
