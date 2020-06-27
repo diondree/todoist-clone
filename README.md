@@ -1,6 +1,15 @@
 ## Todoist Clone
 
-This repository contains the source code for a partial Todist clone. It is built with TypeScript and uses Redux for state management.
+This repository contains the source code for a scaled down version of a Todist clone.
+
+See Demo: https://diondre-todoist.netlify.app/
+
+## Technologies Used
+
+- TypeScript
+- Redux
+- Redux Persist
+- React Router
 
 ## Improvements
 
