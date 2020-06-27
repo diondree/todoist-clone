@@ -16,20 +16,21 @@ export const todos = (todos = initialTodos, action: TodoActionTypes) => {
         {
           id: action.payload.id,
           text: action.payload.text,
+          dueDate: action.payload.dueDate,
           completed: false,
         },
       ];
+    case 'UPDATE_TODO':
+      return todos.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, ...action.payload };
+        }
+        return todo;
+      });
     case 'TOGGLE_TODO':
       return todos.map((todo) =>
         todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo
       );
-    default:
-      return todos;
-  }
-};
-
-export const FilteredTodos = (todos: any, action: any) => {
-  switch (action.type) {
     default:
       return todos;
   }

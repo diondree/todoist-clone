@@ -1,13 +1,15 @@
 import React from 'react';
-import LeftMenu from './leftmenu';
-import TodoList from './todolist';
 import { useSelector } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+import LeftMenu from './leftmenu';
 import { RootState } from '../store';
+import InboxPage from '../pages/inbox';
+import TodayPage from '../pages/today';
+import UpcomingPage from '../pages/upcoming';
 
 const Page: React.FC = () => {
   const isMenuOpen = useSelector((state: RootState) => state.isMenuOpen);
-  const dateParts = new Date().toDateString().split(' ');
-  const today = `${dateParts[0]} ${dateParts[1]} ${dateParts[2]}`;
 
   return (
     <div>
@@ -15,13 +17,20 @@ const Page: React.FC = () => {
       <LeftMenu />
       <div className={`content ${isMenuOpen && 'content--menu-open'}`}>
         <div className="main-content">
-          <header className="page-header">
-            <h1 className="page-header__title">
-              Today
-              <small>{today}</small>
-            </h1>
-          </header>
-          <TodoList />
+          <Switch>
+            <Route exact path="/project">
+              <InboxPage />
+            </Route>
+            <Route path="/today">
+              <TodayPage />
+            </Route>
+            <Route path="/upcoming">
+              <UpcomingPage />
+            </Route>
+            <Route>
+              <Redirect to="project" />
+            </Route>
+          </Switch>
         </div>
       </div>
     </div>

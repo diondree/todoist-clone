@@ -1,5 +1,6 @@
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const UPDATE_TODO = 'UPDATE_TODO';
 export type TodoText = string;
 export type TodoId = string;
 
@@ -8,19 +9,24 @@ export type TodoState = Todo[];
 export type Todo = {
   id: string;
   text: string;
-  dueDate: string;
+  dueDate?: string;
   completed: boolean;
 };
 
 export type NewTodo = {
   id?: TodoId;
   text: string;
-  dueDate: string;
+  dueDate?: string;
 };
 
 interface AddTodoAction {
   type: typeof ADD_TODO;
   payload: NewTodo;
+}
+
+interface UpdateTodoAction {
+  type: typeof UPDATE_TODO;
+  payload: Todo;
 }
 
 interface ToggleTodoAction {
@@ -30,4 +36,4 @@ interface ToggleTodoAction {
   };
 }
 
-export type TodoActionTypes = AddTodoAction | ToggleTodoAction;
+export type TodoActionTypes = AddTodoAction | ToggleTodoAction | UpdateTodoAction;

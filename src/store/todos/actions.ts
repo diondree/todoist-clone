@@ -1,4 +1,4 @@
-import { TodoId, TodoActionTypes, NewTodo } from './types';
+import { TodoId, TodoActionTypes, NewTodo, Todo } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 export const addTodo = (todo: NewTodo): TodoActionTypes => ({
@@ -7,6 +7,11 @@ export const addTodo = (todo: NewTodo): TodoActionTypes => ({
     id: uuidv4(),
     ...todo,
   },
+});
+
+export const updateTodo = (todo: Todo): TodoActionTypes => ({
+  type: 'UPDATE_TODO',
+  payload: todo,
 });
 
 export const toggleTodo = (id: TodoId): TodoActionTypes => ({

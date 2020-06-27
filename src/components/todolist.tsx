@@ -6,11 +6,30 @@ import TodoItem from './todo';
 import { ReactComponent as PlusIcon } from '../svgs/plus-lg.svg';
 import TodoForm from './todoform';
 
-const TodoList: React.FC = () => {
+type Filter = 'today' | 'upcoming' | undefined;
+
+export interface TodoListProps {
+  filter?: Filter;
+}
+
+const getFilteredTodos = (filter: Filter, todos: Todo[]): Todo[] => {
+  if (filter === 'today') {
+    const today = new Date().toDateString();
+    return todos.filter((todo) => todo.dueDate === today);
+  }
+  if (filter === 'upcoming') {
+    const today = new Date().toDateString();
+    return todos.filter((todo) => todo.dueDate && Date.parse(todo.dueDate) > Date.parse(today));
+  }
+
+  return todos;
+};
+const TodoList: React.FC<TodoListProps> = ({ filter }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState('');
 
   const todos = useSelector((state: RootState) => state.todos);
+  const filteredTodos = getFilteredTodos(filter, todos);
 
   const toggleEditing = () => {
     setIsEditing(!isEditing);
@@ -26,10 +45,17 @@ const TodoList: React.FC = () => {
     setIsEditing(false);
   };
 
+  const handleFormSubmit = (submitType: 'update' | 'new') => {
+    if (submitType === 'update') {
+      setSelectedTodo('');
+      setIsEditing(false);
+    }
+  };
+
   return (
     <div>
       <ul>
-        {todos.map(
+        {filteredTodos.map(
           (todo: Todo) =>
             todo.id !== selectedTodo && (
               <li className="todo-list-item" key={todo.id}>
@@ -42,6 +68,7 @@ const TodoList: React.FC = () => {
             <TodoForm
               {...(selectedTodo !== '' && { todo: todos.find((todo) => todo.id === selectedTodo) })}
               onCancel={handleEditCancel}
+              onConfirm={handleFormSubmit}
             />
           </li>
         )}

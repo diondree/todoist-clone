@@ -252,6 +252,13 @@ button:disabled {
   -webkit-box-align: center;
   align-items: center;
 }
+.filter:hover {
+  background-color: #fff;
+}
+.current .filter {
+  background: #fff;
+  font-weight: 700;
+}
 
 .filter__icon {
   width: 28px;
@@ -415,9 +422,13 @@ button:disabled {
   -webkit-box-pack: center;
   justify-content: center;
 }
+.todo-item__checkbox:hover {
+  background-color: hsla(0, 0%, 50.2%, 0.2);
+}
 
 .todo-item__checkbox svg {
   display: inline-block;
+  box-sizing: content-box;
   border: 1px solid transparent;
   height: 16px;
   width: 16px;
@@ -427,6 +438,11 @@ button:disabled {
   margin-top: -8px;
   pointer-events: none;
   opacity: 0;
+}
+
+.todo-item__checkbox:hover svg {
+  opacity: 1;
+  color: grey;
 }
 
 .todo-item__content-holder {
