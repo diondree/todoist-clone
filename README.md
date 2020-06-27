@@ -13,6 +13,8 @@ See Demo: https://diondre-todoist.netlify.app/
 
 ## Improvements
 
+- Add ability to show completed tasks
+- Set default schedule based on view
 - Add a date picker for the schedule selection
 - Add ability to prioritise tasks
 - Add task counts in the sidebar
