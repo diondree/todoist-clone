@@ -4,6 +4,27 @@ This repository contains the source code for a scaled down version of a Todist c
 
 See Demo: https://diondre-todoist.netlify.app/
 
+## Setup and Installation
+
+```bash
+# Clone project
+git clone https://github.com/diondree/todoist-clone
+
+# Go to project
+cd todoist-clone
+
+# Install dependencies
+yarn install
+# OR
+npm install
+
+# Start development server
+yarn start
+
+# Build production version
+yarn build
+```
+
 ## Technologies Used
 
 - TypeScript
